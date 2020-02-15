@@ -31,7 +31,7 @@ router.post(
     try {
       let user = await User.findOne({ email: email });
       if (user) {
-        res.status(400).json({ msg: 'User already exists' });
+        res.status(400).json({ msg: 'User already exists' }); //that goes to the payload at the payload in the register function at AuthState file;
       }
 
       user = new User({

@@ -11,6 +11,7 @@ const User = require('../models/User'); //define our User based on that Model;
 // @desc    Get logged in user
 // @access  Private
 router.get('/', auth, async (req, res) => {
+  //jwt is Stateless we have to keep making the call to make sure the user is registered;
   try {
     const user = await User.findById(req.user.id).select('-password');
 
@@ -41,13 +42,13 @@ router.post(
     try {
       let user = await User.findOne({ email: email }); //if the user exists we can access it afterwards;
       if (!user) {
-        return res.status(400).json({ msg: "Email doesn't exists" });
+        return res.status(400).json({ msg: 'Invalid credentials' });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: "Password doesn't match" });
+        return res.status(400).json({ msg: 'Invalid credentials' });
       }
 
       //payload that goes with the webToken after being signed in to the id together;
