@@ -1,7 +1,6 @@
 //useReducer allow us to have access to state and dispatch, so we can dispatch to our reducer
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import uuid from 'uuid'; //to generate random id;
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import setAuthToken from '../../utils/setAuthToken';

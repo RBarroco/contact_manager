@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/contact/contactContext';
 
-{
-  /*We use Link because of the speed of renderization better than using a tags which is rendered on the wrong time of the process */
-}
+/*We use Link because of the speed of renderization better than using a tags which is rendered on the wrong time of the process */
 
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
@@ -61,7 +59,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Contact Keeper',
+  title: 'Contact Manager',
   icon: 'fas fa-id-card-alt'
 };
 

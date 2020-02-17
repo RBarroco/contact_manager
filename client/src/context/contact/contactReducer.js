@@ -65,7 +65,7 @@ export default (state, action) => {
         ...state,
         filtered: state.contacts.filter(contact => {
           const regex = new RegExp(`${action.payload}`, 'gi'); //gi means global insensitivity to case so upper or lower;
-          return contact.name.match(regex) || contact.email.match(regex); //return any name that matches;
+          return contact.name.match(regex) || contact.email.match(regex); //return any name/email that matches;
         })
       };
     case CLEAR_FILTER:

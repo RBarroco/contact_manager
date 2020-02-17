@@ -13,7 +13,7 @@ const ContactFilter = () => {
       text.current.value = ''; //ref={text}
     }
   });
-  console.log(text);
+
   const onChange = e => {
     if (text.current.value !== '') {
       filterContacts(e.target.value);

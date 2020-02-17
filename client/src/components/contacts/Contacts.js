@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Spinner from '../layout/Spinner';
 import ContactItem from './ContactItem';
 import ContactContext from '../../context/contact/contactContext';
@@ -21,31 +20,16 @@ const Contacts = () => {
   return (
     <Fragment>
       {contacts !== null && !loading ? (
-        <TransitionGroup>
+        <div>
           {/*If we have anything inside of filtered we show it else we show everything*/}
           {filtered !== null
             ? filtered.map(contact => (
-                <CSSTransition
-                  key={contact._id}
-                  timeout={500}
-                  classNames="item"
-                >
-                  {' '}
-                  {/*mongoDB _id */}
-                  {/*The key needs to be inside of the CSSTransition not in te Contact Item*/}
-                  <ContactItem contact={contact} />
-                </CSSTransition>
+                <ContactItem contact={contact} key={contact._id} />
               ))
             : contacts.map(contact => (
-                <CSSTransition
-                  key={contact._id}
-                  timeout={500}
-                  classNames="item"
-                >
-                  <ContactItem contact={contact} />
-                </CSSTransition>
+                <ContactItem contact={contact} key={contact._id} />
               ))}
-        </TransitionGroup>
+        </div>
       ) : (
         <Spinner />
       )}
